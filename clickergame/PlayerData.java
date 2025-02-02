@@ -1,14 +1,14 @@
 package clickergame;
-//I'm not sure why this whitespace is here tbh
-//Ill just. fill it with comments
-//This class stores and updates all of the information the game keeps on the player
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 class PlayerData{
     //Setting the starting values of all of the silly important variables
     //in the future, these will be saved to a different file periodically and the values on opening the program will be pulled from there
     //manual saves only will be supported but autosaving is probably default- after important actions and every minute or so
     //there will also be... a lot more! 
     int clickValue = 1;
-    double clickMod = 1;
+    float clickMod = 1;
     float passiveValue = 1;
     float passiveMod = 1;
     float score = 0;
@@ -28,6 +28,14 @@ class PlayerData{
     void passiveScoreTick(){
         this.score+=this.passiveValue*this.passiveMod;
     }
+
+    void openScoreMenu(){
+        JFrame scoreWindow = new JFrame("Upgrades");
+        JButton upgrade = new JButton("placeholder");
+        upgrade.addActionListener((ActionEvent i) -> this.clickValue+=1);
+    }
+
+
 
     //methods im planning to do (off the top of my head, not a full list)
     //get click value to display how much you earn per click

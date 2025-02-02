@@ -1,5 +1,6 @@
 package clickergame;
 
+
 import java.awt.event.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;  
@@ -13,7 +14,7 @@ public class Main{
         JFrame window = new JFrame("game!");
         //I don't actually know how the bounds work i just put random numbers in
         //saw that they were used in... one of the swing hello world programs i looked at
-        window.setBounds(50, 50, 100, 100);
+
 
         //button.
         JButton scoreClick = new JButton(String.valueOf(player.getScore()));
@@ -23,8 +24,13 @@ public class Main{
             player.click();
             scoreClick.setText(String.valueOf(player.getScore()));
             scoreClick.repaint();
-        } //WHY ARE THERE SO MANY CURLY BRACKETS IM JUST MAKING A BUTTON LIKE, DO SOMETHING
-        );
+        }); //WHY ARE THERE SO MANY CURLY BRACKETS IM JUST MAKING A BUTTON LIKE, DO SOMETHING
+
+
+        JButton upgradeMenu = new JButton("Upgrades");
+        upgradeMenu.addActionListener((ActionEvent i) -> player.openScoreMenu());
+        upgradeMenu.setBounds(10, 5, 5, 5);
+
 
         int timer = 1000;
         ActionListener timeEventHandler = (ActionEvent i) -> {
@@ -38,6 +44,7 @@ public class Main{
 
         //make the window appear
         window.add(scoreClick);
+        window.add(upgradeMenu);
         window.setSize(100,100);  
         window.setVisible(true); 
             
