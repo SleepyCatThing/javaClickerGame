@@ -13,26 +13,43 @@ class PlayerData{
     float passiveMod = 1;
     float score = 0;
 
-    //returns score as string so it can go on button
+    //get methods
     float getScore() {
         return this.score;
     }
+    int getClickValue() {
+        return clickValue;
+    }
+    float getClickMod() {
+        return clickMod;
+    }
+    float getPassiveMod() {
+        return passiveMod;
+    }
+    float getPassiveValue() {
+        return passiveValue;
+    }
 
-    //i realize as im writing this that this isn't a good way to handle the score because clickmod being at something like 1.1 would do absolutely nothing for the calculations
-    //ill fix that in the morning im really tired
-    //this SHOULD update score to the correct value per click
+    //the clicker part of the clicker game
     void click(){
         this.score+=this.clickMod*this.clickValue;
     }
 
+    //probably moves out of class, most of the stuff surrounding this should leave main
     void passiveScoreTick(){
         this.score+=this.passiveValue*this.passiveMod;
     }
 
+
+    //move to another class probably since this isn't part of the player's data
     void openScoreMenu(){
         JFrame scoreWindow = new JFrame("Upgrades");
         JButton upgrade = new JButton("placeholder");
         upgrade.addActionListener((ActionEvent i) -> this.clickValue+=1);
+
+        scoreWindow.add(upgrade);
+        scoreWindow.setSize(100,100);
+        scoreWindow.setVisible(true);
     }
 
 
